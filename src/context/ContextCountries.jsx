@@ -7,6 +7,8 @@ export const ContextProvider = (props) => {
 	const [countries, setCountries] = useState(data);
 	const [filter, setFilter] = useState("All");
 	const [showCountries, setShowCountries] = useState(true);
+	const [darkTheme, setDarkTheme] = useState(true);
+
 	let [searchedCountry, setSearchedCountry] = useState("");
 	// console.log(filter);
 	const handleSetFilter = (selectedFilter) => {
@@ -29,7 +31,7 @@ export const ContextProvider = (props) => {
 	const getCountryFromSearch = (selectedFromSearch) => {
 		console.log(selectedFromSearch);
 		searchedCountry = data.find((e) => {
-			return e.name == `${selectedFromSearch}`;
+			return e.name.toLowerCase() == `${selectedFromSearch}`;
 		});
 		setSearchedCountry(searchedCountry);
 		setShowCountries(false);
@@ -39,9 +41,7 @@ export const ContextProvider = (props) => {
 	useEffect(() => {
 		handleChangeCoutries();
 	}, [filter]);
-	// useEffect(()=>{
 
-	// },[searchedCountry]);
 	return (
 		<ContextCountries.Provider
 			value={{
@@ -51,6 +51,8 @@ export const ContextProvider = (props) => {
 				getCountryFromSearch,
 				showCountries,
 				searchedCountry,
+				darkTheme,
+				setDarkTheme,
 			}}
 		>
 			{props.children}

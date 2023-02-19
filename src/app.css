@@ -33,3 +33,13 @@ img {
 .app {
 	background-color: var(--Very-Light-Gray) !important;
 }
+/* dark mode */
+.app.dark {
+	background-color: var(--very-dark-blue) !important;
+}
+html {
+	background-color: var(--Very-Light-Gray) !important;
+}
+html.dark {
+	background-color: var(--very-dark-blue) !important;
+}

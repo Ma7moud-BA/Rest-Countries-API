@@ -1,5 +1,7 @@
 .home {
 	height: 100vh;
-
 	background-color: var(--Very-Light-Gray) !important;
+}
+.home.dark {
+	background-color: var(--very-Dark-Blue) !important;
 }

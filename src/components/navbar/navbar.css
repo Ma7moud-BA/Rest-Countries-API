@@ -22,6 +22,24 @@
 	margin-right: 5px;
 }
 
+/* dark mode */
+.my-navbar.dark {
+	background-color: var(--Dark-Blue) !important;
+}
+.title.dark {
+	color: white !important;
+}
+.darkModeContainer.dark {
+	color: white !important;
+}
+a {
+	text-decoration: none !important;
+	color: var(--Very-Dark-Blue) !important;
+}
+a.dark {
+	color: white !important;
+}
+
 @media screen and (min-width: 1440px) {
 	.darkModeContainer {
 		margin-right: 50px;

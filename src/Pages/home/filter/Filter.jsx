@@ -7,29 +7,41 @@ const Filter = () => {
 	const { filter, handleSetFilter, getCountryFromSearch } =
 		useContext(ContextCountries); // i can destruct countries here but i cant in the Countries.jsx component
 	const { countries } = useContext(ContextCountries); // i can destruct countries here but i cant in the Countries.jsx component
-	const allCountries = countries;
 
 	const handleSelectFilter = (e) => {
 		handleSetFilter(e.target.value);
 	};
+	function containsNumbers(str) {
+		return /\d/.test(str);
+	}
 	const handleSearch = (e) => {
-		e.key == "Enter" && getCountryFromSearch(searchref.current.value);
-		//
+		if (
+			searchref.current.value !== "" &&
+			!containsNumbers(searchref.current.value)
+		) {
+			const CountryName = searchref.current.value;
+			e.key == "Enter" && getCountryFromSearch(CountryName.toLowerCase());
+		}
 	};
 	return (
-		<div className="filter-div ">
-			<div className="search-div">
-				<BsSearch className="icon-search"></BsSearch>
+		<div className="filter-div dark ">
+			<div className="search-div dark">
+				<BsSearch className="icon-search dark"></BsSearch>
 				<input
 					type="search"
-					className="input-field"
+					className="input-field dark"
 					onKeyUp={handleSearch}
 					ref={searchref}
 					placeholder="Search for a country..."
 				/>
 			</div>
 
-			<select name="filter" id="filter" onChange={handleSelectFilter}>
+			<select
+				name="filter"
+				id="filter"
+				onChange={handleSelectFilter}
+				className="dark"
+			>
 				{/* <option value="none" disabled selected hidden>
 					Filter by Region
 				</option> */}

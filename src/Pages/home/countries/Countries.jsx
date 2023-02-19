@@ -1,8 +1,7 @@
-import axios from "axios";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./countries.css";
 import ContextCountries from "../../../context/ContextCountries";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Countries = () => {
 	const countries = useContext(ContextCountries); //this is dumb i cant destuct countries in this file and id dont know why
 	const { searchedCountry, showCountries } = useContext(ContextCountries);
@@ -11,10 +10,10 @@ const Countries = () => {
 	// console.log("counterFromcc ", countries["countries"]);
 	if (showCountries) {
 		return (
-			<div className="countries-container">
+			<div className="countries-container dark">
 				{countries["countries"].map((country) => {
 					return (
-						<div className="country-div " key={country.name}>
+						<div className="country-div dark" key={country.name}>
 							<img
 								src={country.flags.svg}
 								alt="flag"
@@ -23,23 +22,26 @@ const Countries = () => {
 								}}
 							/>
 							<div
-								className="country-info"
+								className="country-info dark"
 								onClick={() => {
 									navigate(`/${country.numericCode}`);
 								}}
 							>
-								<p className="name">{country.name}</p>
-								<p className="title">
+								<p className="name dark">{country.name}</p>
+								<p className="title dark">
 									{" "}
-									Population: <span>{country.population.toLocaleString()}</span>
+									Population:{" "}
+									<span className="dark">
+										{country.population.toLocaleString()}
+									</span>
 								</p>
-								<p className="title">
+								<p className="title dark">
 									{" "}
-									Region: <span>{country.region}</span>
+									Region: <span className="dark">{country.region}</span>
 								</p>
-								<p className="title">
+								<p className="title dark">
 									{" "}
-									Capital: <span>{country.capital}</span>
+									Capital: <span className="dark">{country.capital}</span>
 								</p>
 							</div>
 						</div>
@@ -48,9 +50,16 @@ const Countries = () => {
 			</div>
 		);
 	} else {
+		if (!searchedCountry) {
+			return (
+				<div class="alert alert-info text-center" role="alert">
+					No Such Country!
+				</div>
+			);
+		}
 		return (
-			<div className="countries-container">
-				<div className="country-div ">
+			<div className="countries-container dark">
+				<div className="country-div dark">
 					<img
 						src={searchedCountry.flags.svg}
 						alt="flag"
@@ -59,23 +68,24 @@ const Countries = () => {
 						}}
 					/>
 					<div
-						className="country-info"
+						className="country-info dark"
 						onClick={() => {
 							navigate(`/${searchedCountry.numericCode}`);
 						}}
 					>
-						<p className="name">{searchedCountry.name}</p>
-						<p className="title">
+						<p className="name dark">{searchedCountry.name}</p>
+						<p className="title dark">
 							{" "}
-							Population: <span>{searchedCountry.population}</span>
+							Population:{" "}
+							<span className="dark">{searchedCountry.population}</span>
 						</p>
-						<p className="title">
+						<p className="title dark">
 							{" "}
-							Region: <span>{searchedCountry.region}</span>
+							Region: <span className="dark">{searchedCountry.region}</span>
 						</p>
-						<p className="title">
+						<p className="title dark">
 							{" "}
-							Capital: <span>{searchedCountry.capital}</span>
+							Capital: <span className="dark">{searchedCountry.capital}</span>
 						</p>
 					</div>
 				</div>
