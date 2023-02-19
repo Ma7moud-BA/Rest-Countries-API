@@ -1,0 +1,32 @@
+.my-navbar {
+	background-color: white !important;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+	height: 80px;
+}
+.title {
+	text-decoration: none;
+	color: black;
+	font-weight: 800;
+	color: var(--Very-Dark-Blue) !important;
+	font-size: 1.1rem;
+}
+.darkModeContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+	color: var(--Very-Dark-Blue) !important;
+	cursor: pointer;
+}
+.darkModeContainer svg {
+	margin-right: 5px;
+}
+
+@media screen and (min-width: 1440px) {
+	.darkModeContainer {
+		margin-right: 50px;
+	}
+	.title {
+		margin-left: 50px;
+	}
+}
